@@ -1,4 +1,4 @@
-#include "philoso.h"
+#include "phil.h"
 
 int main(int argc, char **argv)
 {

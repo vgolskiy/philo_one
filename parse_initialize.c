@@ -1,4 +1,4 @@
-#include "philoso.h"
+#include "phil.h"
 
 static t_ph	*init_ph(t_st *st)
 {

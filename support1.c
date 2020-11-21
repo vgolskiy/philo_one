@@ -1,4 +1,4 @@
-#include "philoso.h"
+#include "phil.h"
 
 /*
 ** ERRORS' MESSAGES LIST
