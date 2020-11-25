@@ -18,24 +18,29 @@ typedef struct	s_err
 	const char	*desc;
 }				t_err;
 
+typedef struct	s_msg
+{
+	const char	*desc;
+}				t_msg;
+
 typedef struct	s_ph
 {
-	int				turn;
-	int				eats_qty;
+	int				number;
+	int				eat_qty;
 	t_bool			fork_left;
 	t_bool			fork_right;
 	t_bool			eating;
-	uint64_t		time_last_eat;
 	uint64_t		time_limit_life;
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	mutex_eat;
-	struct s_st		*status;
+	struct s_st		*st;
 }				t_ph;
 
 typedef struct	s_st
 {
 	int				qty;
-	int				eats_max;
+	int				eat_max;
+	t_bool			stop;
 	uint64_t		time_die;
 	uint64_t		time_eat;
 	uint64_t		time_sleep;
@@ -57,12 +62,37 @@ uint64_t	ft_atoi(const char *s);
 ** SUPPORT2
 */
 int			ft_strlen(const char *s);
-int			ft_isdigit(int c);
+t_bool		ft_isdigit(int c);
 int			free_all(t_st *st);
+uint64_t	current_time(void);
+
+/*
+** SUPPORT3
+*/
+void		ft_putchar_fd(char c, int fd);
+void		ft_putstr_fd(const char *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
 
 /*
 ** PARSE & INITIALIZE
 */
 int			parse_args(t_st *st, int argc, char **argv);
+
+/*
+**	PARALLELIZE
+*/
+int			parallelize(t_st *st);
+
+/*
+**	EAT WITH FORKS
+*/
+int			eat_some(t_ph *ph);
+int			take_forks(t_ph *ph);
+int			place_forks(t_ph *ph);
+
+/*
+**	PRINT MESSAGE
+*/
+int			print_message(t_ph *ph, int msg_num);
 
 #endif

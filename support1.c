@@ -11,7 +11,18 @@
 ** 7) Error: wrong number of times each philosopher must eat
 ** 8) Error: malloc t_ph
 ** 9) Error: malloc mutex
-** 10) Error: mutex operation failed
+** 10) Error: gettimeofday failed
+** 11) Error: mutex operation failed (check_status)
+** 12) Error: mutex operation failed (routine)
+** 13) Error: mutex operation failed (counter)
+** 14) Error: mutex operation failed (parallelize)
+** 15) Error: mutex operation failed (init_ph)
+** 16) Error: mutex operation failed (parse_args2)
+** 17) Error: mutex operation failed (eat_some)
+** 18) Error: mutex operation failed (take_forks)
+** 19) Error: mutex operation failed (place_forks)
+** 20) Error: mutex operation failed (print_msg)
+** 21) Error: mutex operation failed (free_all)
 */
 
 t_err	g_err[] =
@@ -23,7 +34,20 @@ t_err	g_err[] =
 	{"Error: wrong eat time\n"},
 	{"Error: wrong sleep time\n"},
 	{"Error: wrong number of times each philosopher must eat\n"},
-	{"Error: mutex operation failed\n"},
+	{"Error: malloc t_ph\n"},
+	{"Error: malloc mutex\n"},
+	{"Error: gettimeofday failed\n"},
+	{"Error: mutex operation failed (check_status)\n"},
+	{"Error: mutex operation failed (routine)\n"},
+	{"Error: mutex operation failed (counter)\n"},
+	{"Error: mutex operation failed (parallelize)\n"},
+	{"Error: mutex operation failed (init_ph)\n"},
+	{"Error: mutex operation failed (parse_args2)\n"},
+	{"Error: mutex operation failed (eat_some)\n"},
+	{"Error: mutex operation failed (take_forks)\n"},
+	{"Error: mutex operation failed (place_forks)\n"},
+	{"Error: mutex operation failed (print_msg)\n"},
+	{"Error: mutex operation failed (free_all)\n"},
 };
 
 static char		*ft_rewind(const char *str)

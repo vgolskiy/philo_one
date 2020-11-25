@@ -1,13 +1,16 @@
 #include "phil.h"
+#include <stdio.h>//test
+#include <errno.h>//test
+#include <string.h>//test
 
-int		ft_isdigit(int c)
+t_bool		ft_isdigit(int c)
 {
 	if ((c >= 48) && (c <= 57))
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
-int		ft_strlen(const char *s)
+int			ft_strlen(const char *s)
 {
 	int	i;
 	
@@ -18,21 +21,19 @@ int		ft_strlen(const char *s)
 	return (i);
 }
 
-int		free_all(t_st *st)
+int			free_all(t_st *st)
 {
 	int	i;
 	
-	if (pthread_mutex_destroy(&st->mutex_death)
-		|| pthread_mutex_destroy(&st->mutex_print))
-		return (error(10));
+	pthread_mutex_destroy(&st->mutex_death);
+	pthread_mutex_destroy(&st->mutex_print);
 	if (st->ph)
 	{
 		i = -1;
 		while (++i < st->qty)
 		{
-			if (pthread_mutex_destroy(&st->ph[i].mutex)
-				|| pthread_mutex_destroy(&st->ph[i].mutex_eat))
-				return (error(10));
+			pthread_mutex_destroy(&st->ph[i].mutex);
+			pthread_mutex_destroy(&st->ph[i].mutex_eat);
 		}
 		free(st->ph);
 	}
@@ -40,9 +41,19 @@ int		free_all(t_st *st)
 	{
 		i = -1;
 		while (++i < st->qty)
-			if (pthread_mutex_destroy(&st->mutex_forks[i]))
-				return (error(10));
+			pthread_mutex_destroy(&st->mutex_forks[i]);
 		free(st->mutex_forks);
 	}
 	return (EXIT_SUCCESS);
+}
+
+uint64_t	current_time(void)
+{
+	uint64_t				res;
+	static struct timeval	time;
+
+	if (gettimeofday(&time, 00))
+		return (error(10));
+	res = time.tv_sec * 1000 + time.tv_usec / 1000;
+	return (res);
 }

@@ -11,6 +11,11 @@ int main(int argc, char **argv)
 	else
 		if (parse_args(&st, argc, argv))
 			return (EXIT_FAILURE);
+	if (parallelize(&st))
+		return (free_all(&st) && EXIT_FAILURE);
+	if (pthread_mutex_lock(&st.mutex_death)
+		|| pthread_mutex_unlock(&st.mutex_death))
+		return (free_all(&st) && EXIT_FAILURE);
 	if (free_all(&st))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
