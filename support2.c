@@ -1,7 +1,4 @@
 #include "phil.h"
-#include <stdio.h>//test
-#include <errno.h>//test
-#include <string.h>//test
 
 t_bool		ft_isdigit(int c)
 {

@@ -53,7 +53,7 @@ void	*routine(void *arg)
 		error(12);
 		return ((void *)1);
 	}
-	//pthread_detach(thread_id);
+	pthread_detach(thread_id);
 	while (!ph->st->stop)
 	{
 		if (!ph->st->stop)
@@ -114,14 +114,14 @@ int		parallelize(t_st *st)
 	{
 		if (pthread_create(&thread_id, 00, &counter, (void *)st))
 			return (error(14));
-		//pthread_detach(thread_id);
+		pthread_detach(thread_id);
 	}
 	i = -1;
 	while (++i < st->qty)
 	{
 		if (pthread_create(&thread_id, 00, &routine, (void *)&(st->ph[i])))
 			return (error(14));
-		//pthread_detach(thread_id);
+		pthread_detach(thread_id);
 		usleep(100);	
 	}
 	return (EXIT_SUCCESS);
