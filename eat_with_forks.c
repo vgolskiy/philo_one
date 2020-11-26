@@ -4,8 +4,6 @@ int		eat_some(t_ph *ph)
 {
 	uint64_t	curr_time;
 
-	if (pthread_mutex_lock(&ph->mutex))
-		return (error(17));
 	ph->eating = true;
 	if ((curr_time = current_time()) == 1)
 		return (EXIT_FAILURE);
@@ -15,8 +13,7 @@ int		eat_some(t_ph *ph)
 	usleep(ph->st->time_eat * 1000);
 	ph->eat_qty++;
 	ph->eating = false;
-	if (pthread_mutex_unlock(&ph->mutex)
-		|| pthread_mutex_unlock(&ph->mutex_eat))
+	if (pthread_mutex_unlock(&ph->mutex_eat))
 		return (error(17));
 	return (EXIT_SUCCESS);
 }

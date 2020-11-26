@@ -31,7 +31,6 @@ typedef struct	s_ph
 	t_bool			fork_right;
 	t_bool			eating;
 	uint64_t		time_limit_life;
-	pthread_mutex_t	mutex;
 	pthread_mutex_t	mutex_eat;
 	struct s_st		*st;
 }				t_ph;
