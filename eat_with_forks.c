@@ -3,7 +3,7 @@
 static int	ate_enougth(t_st *st)
 {
 	st->stop = true;
-	print_message(&(st->ph[st->qty - 1]), 6);
+	print_message(&(st->ph[st->qty - 1]), 5);
 	if (pthread_mutex_unlock(&st->mutex_death))
 		return (error(13));
 	return (EXIT_SUCCESS);
@@ -37,7 +37,7 @@ int			take_forks(t_ph *ph)
 	if (pthread_mutex_lock(&ph->st->mutex_forks[ph->fork_right]))
 		return (error(18));
 	if (!ph->st->stop)
-		print_message(ph, 5);
+		print_message(ph, 4);
 	return (EXIT_SUCCESS);
 }
 

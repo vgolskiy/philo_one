@@ -10,11 +10,11 @@ static void	*check_status(void *arg)
 	{
 		if ((curr_time = current_time()) == 1)
 			return ((void *)1);
-		if (!ph->st->stop
-			&& !ph->eating && (curr_time > ph->time_limit_life))
+		if (!ph->st->stop && !ph->eating
+			&& (curr_time > ph->time_limit_life))
 		{
 			ph->st->stop = true;
-			print_message(ph, 7);
+			print_message(ph, 6);
 			if (pthread_mutex_unlock(&ph->st->mutex_death))
 			{
 				error(11);

@@ -5,10 +5,9 @@
 ** 1) Current time philosopher# is thinking
 ** 2) Current time philosopher# is sleeping
 ** 3) Current time philosopher# is eating
-** 4) Current time philosopher# took a left fork
-** 5) Current time philosopher# took a right fork
-** 6) Reached number of times each philosopher must eat
-** 7) Current time philosopher# died
+** 4) Current time philosopher# has taken a fork
+** 5) Reached number of times each philosopher must eat
+** 6) Current time philosopher# died
 */
 
 t_msg	g_msg[] =
@@ -16,8 +15,7 @@ t_msg	g_msg[] =
 	{" is thinking\n"},
 	{" is sleeping\n"},
 	{" is eating\n"},
-	{" took a left fork\n"},
-	{" took a right fork\n"},
+	{" has taken a fork\n"},
 	{" Reached number of times each philosopher must eat\n"},
 	{" died\n"}
 };
