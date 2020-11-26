@@ -22,7 +22,7 @@ static void	*check_status(void *arg)
 			}
 			return ((void *)0);
 		}
-		usleep(1000);
+		usleep(666);
 	}
 	return ((void *)0);
 }
@@ -61,37 +61,6 @@ static void	*actions(void *arg)
 	return ((void *)0);
 }
 
-static void	*counter(void *arg)
-{
-	int		i;
-	int		eat;
-	t_st	*st;
-
-	st = (t_st *)arg;
-	eat = 0;
-	while (eat < st->eat_max)
-	{
-		i = -1;
-		while (++i < st->qty)
-		{
-			if (pthread_mutex_lock(&st->ph[i].mutex_eat))
-			{
-				error(13);
-				return ((void *)1);
-			}
-		}
-		eat++;
-	}
-	st->stop = true;
-	print_message(&(st->ph[0]), 6);
-	if (pthread_mutex_unlock(&st->mutex_death))
-	{
-		error(13);
-		return ((void *)1);
-	}
-	return ((void *)0);
-}
-
 int		parallelize(t_st *st)
 {
 	pthread_t	thread_id;
@@ -99,19 +68,13 @@ int		parallelize(t_st *st)
 
 	if ((st->time_start = current_time()) == 1)
 		return (EXIT_FAILURE);
-	if (st->eat_max)
-	{
-		if (pthread_create(&thread_id, 00, &counter, (void *)st))
-			return (error(14));
-		pthread_detach(thread_id);
-	}
 	i = -1;
 	while (++i < st->qty)
 	{
 		if (pthread_create(&thread_id, 00, &actions, (void *)&(st->ph[i])))
 			return (error(14));
 		pthread_detach(thread_id);
-		usleep(100);	
+		usleep(42);	
 	}
 	return (EXIT_SUCCESS);
 }

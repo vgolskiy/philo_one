@@ -16,9 +16,6 @@ static t_ph	*init_ph(t_st *st)
 		ph[i].fork_left = i;
 		ph[i].fork_right = (i + 1) % st->qty;
 		ph[i].st = st;
-		if (pthread_mutex_init(&ph[i].mutex_eat, 00)
-			|| pthread_mutex_lock(&ph[i].mutex_eat))
-			return (error_ptr(15));
 	}
 	return (ph);
 }

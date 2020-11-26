@@ -1,6 +1,15 @@
 #include "phil.h"
 
-int		eat_some(t_ph *ph)
+static int	ate_enougth(t_st *st)
+{
+	st->stop = true;
+	print_message(&(st->ph[st->qty - 1]), 6);
+	if (pthread_mutex_unlock(&st->mutex_death))
+		return (error(13));
+	return (EXIT_SUCCESS);
+}
+
+int			eat_some(t_ph *ph)
 {
 	uint64_t	curr_time;
 
@@ -13,12 +22,13 @@ int		eat_some(t_ph *ph)
 	usleep(ph->st->time_eat * 1000);
 	ph->eat_qty++;
 	ph->eating = false;
-	if (pthread_mutex_unlock(&ph->mutex_eat))
-		return (error(17));
+	if (ph->number + 1 == ph->st->qty
+		&& ph->eat_qty == ph->st->eat_max)
+		return (ate_enougth(ph->st));
 	return (EXIT_SUCCESS);
 }
 
-int		take_forks(t_ph *ph)
+int			take_forks(t_ph *ph)
 {
 	if (pthread_mutex_lock(&ph->st->mutex_forks[ph->fork_left]))
 		return (error(18));

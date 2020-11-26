@@ -25,12 +25,7 @@ int			free_all(t_st *st)
 	pthread_mutex_destroy(&st->mutex_death);
 	pthread_mutex_destroy(&st->mutex_print);
 	if (st->ph)
-	{
-		i = -1;
-		while (++i < st->qty)
-			pthread_mutex_destroy(&st->ph[i].mutex_eat);
 		free(st->ph);
-	}
 	if (st->mutex_forks)
 	{
 		i = -1;
