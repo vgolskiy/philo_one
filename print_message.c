@@ -29,7 +29,7 @@ int		print_message(t_ph *ph, int msg_num)
 	if ((curr_time = current_time()) == 1)
 		return (EXIT_FAILURE);
 	ft_putnbr_fd((int)(curr_time - ph->st->time_start), STDOUT_FILENO);
-	if (msg_num != 6)
+	if (msg_num != 5)
 	{
 		ft_putchar_fd(' ', STDOUT_FILENO);
 		ft_putnbr_fd(ph->number + 1, STDOUT_FILENO);
