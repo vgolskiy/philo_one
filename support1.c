@@ -103,7 +103,7 @@ uint64_t		ft_atoi(const char *s)
 int		error(int errn)
 {
 	write(STDERR_FILENO, g_err[errn - 1].desc,
-		  ft_strlen(g_err[errn - 1].desc));
+	ft_strlen(g_err[errn - 1].desc));
 	exit(EXIT_FAILURE);
 	return (EXIT_FAILURE);
 }

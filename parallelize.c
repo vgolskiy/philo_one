@@ -79,7 +79,7 @@ int			parallelize(t_st *st)
 		if (pthread_create(&thread_id, 00, &actions, (void *)&(st->ph[i])))
 			return (error(14));
 		pthread_detach(thread_id);
-		usleep(42);	
+		usleep(42);
 	}
 	return (EXIT_SUCCESS);
 }

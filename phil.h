@@ -1,7 +1,6 @@
-#ifndef PHILOSO_H
-# define PHILOSO_H
+#ifndef PHIL_H
+# define PHIL_H
 
-# include <stdio.h> // test
 # include <stdlib.h>
 # include <unistd.h>
 # include <pthread.h>
@@ -53,45 +52,45 @@ typedef struct	s_st
 /*
 ** SUPPORT1
 */
-int			error(int errn);
-void		*error_ptr(int errn);
-uint64_t	ft_atoi(const char *s);
+int				error(int errn);
+void			*error_ptr(int errn);
+uint64_t		ft_atoi(const char *s);
 
 /*
 ** SUPPORT2
 */
-int			ft_strlen(const char *s);
-t_bool		ft_isdigit(int c);
-int			free_all(t_st *st);
-uint64_t	current_time(void);
+int				ft_strlen(const char *s);
+t_bool			ft_isdigit(int c);
+int				free_all(t_st *st);
+uint64_t		current_time(void);
 
 /*
 ** SUPPORT3
 */
-void		ft_putchar_fd(char c, int fd);
-void		ft_putstr_fd(const char *s, int fd);
-void		ft_putnbr_fd(int n, int fd);
+void			ft_putchar_fd(char c, int fd);
+void			ft_putstr_fd(const char *s, int fd);
+void			ft_putnbr_fd(int n, int fd);
 
 /*
 ** PARSE & INITIALIZE
 */
-int			parse_args(t_st *st, int argc, char **argv);
+int				parse_args(t_st *st, int argc, char **argv);
 
 /*
 **	PARALLELIZE
 */
-int			parallelize(t_st *st);
+int				parallelize(t_st *st);
 
 /*
 **	EAT WITH FORKS
 */
-int			eat_some(t_ph *ph);
-int			take_forks(t_ph *ph);
-int			place_forks(t_ph *ph);
+int				eat_some(t_ph *ph);
+int				take_forks(t_ph *ph);
+int				place_forks(t_ph *ph);
 
 /*
 **	PRINT MESSAGE
 */
-int			print_message(t_ph *ph, int msg_num);
+int				print_message(t_ph *ph, int msg_num);
 
 #endif

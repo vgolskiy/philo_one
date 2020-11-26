@@ -41,7 +41,7 @@ int			take_forks(t_ph *ph)
 	return (EXIT_SUCCESS);
 }
 
-int		place_forks(t_ph *ph)
+int			place_forks(t_ph *ph)
 {
 	if (!ph->st->stop)
 		print_message(ph, 2);

@@ -10,7 +10,7 @@ t_bool		ft_isdigit(int c)
 int			ft_strlen(const char *s)
 {
 	int	i;
-	
+
 	i = 0;
 	if (s)
 		while (s[i])
@@ -21,7 +21,7 @@ int			ft_strlen(const char *s)
 int			free_all(t_st *st)
 {
 	int	i;
-	
+
 	pthread_mutex_destroy(&st->mutex_death);
 	pthread_mutex_destroy(&st->mutex_print);
 	if (st->ph)
