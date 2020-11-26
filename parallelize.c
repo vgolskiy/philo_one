@@ -1,6 +1,6 @@
 #include "phil.h"
 
-void	*check_status(void *arg)
+static void	*check_status(void *arg)
 {
 	uint64_t	curr_time;
 	t_ph		*ph;
@@ -38,7 +38,7 @@ void	*check_status(void *arg)
 	return ((void *)0);
 }
 
-void	*routine(void *arg)
+static void	*actions(void *arg)
 {
 	pthread_t	thread_id;
 	uint64_t	curr_time;
@@ -72,7 +72,7 @@ void	*routine(void *arg)
 	return ((void *)0);
 }
 
-void	*counter(void *arg)
+static void	*counter(void *arg)
 {
 	int		i;
 	int		eat;
@@ -119,7 +119,7 @@ int		parallelize(t_st *st)
 	i = -1;
 	while (++i < st->qty)
 	{
-		if (pthread_create(&thread_id, 00, &routine, (void *)&(st->ph[i])))
+		if (pthread_create(&thread_id, 00, &actions, (void *)&(st->ph[i])))
 			return (error(14));
 		pthread_detach(thread_id);
 		usleep(100);	
