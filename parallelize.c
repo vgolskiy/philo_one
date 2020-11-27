@@ -81,3 +81,21 @@ int			parallelize(t_st *st)
 	}
 	return (EXIT_SUCCESS);
 }
+
+int			pthread_result(t_st st)
+{
+	int		status;
+	int		i;
+
+	i = -1;
+	while (++i < st.qty)
+	{
+		pthread_join(st.ph[i].ph_id, (void *)&status);
+		if (status)
+			return (free_all(&st) && EXIT_FAILURE);
+		pthread_join(st.ph[i].checker_id, (void *)&status);
+		if (status)
+			return (free_all(&st) && EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
