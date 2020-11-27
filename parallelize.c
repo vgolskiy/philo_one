@@ -51,7 +51,6 @@ static void	*actions_cycle(t_ph *ph)
 
 static void	*actions(void *arg)
 {
-	pthread_t	thread_id;
 	uint64_t	curr_time;
 	t_ph		*ph;
 
@@ -59,18 +58,16 @@ static void	*actions(void *arg)
 	if ((curr_time = current_time()) == 1)
 		return ((void *)1);
 	ph->time_limit_life = curr_time + ph->st->time_die;
-	if (pthread_create(&thread_id, 00, &check_status, (void *)ph))
+	if (pthread_create(&ph->checker_id, 00, &check_status, (void *)ph))
 	{
 		error(12);
 		return ((void *)1);
 	}
-	pthread_detach(thread_id);
 	return (actions_cycle(ph));
 }
 
 int			parallelize(t_st *st)
 {
-	pthread_t	thread_id;
 	int			i;
 
 	if ((st->time_start = current_time()) == 1)
@@ -78,9 +75,8 @@ int			parallelize(t_st *st)
 	i = -1;
 	while (++i < st->qty)
 	{
-		if (pthread_create(&thread_id, 00, &actions, (void *)&(st->ph[i])))
+		if (pthread_create(&st->ph->ph_id, 00, &actions, (void *)&(st->ph[i])))
 			return (error(14));
-		pthread_detach(thread_id);
 		usleep(42);
 	}
 	return (EXIT_SUCCESS);
