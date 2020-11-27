@@ -21,7 +21,7 @@ int			ft_strlen(const char *s)
 int			free_all(t_st *st)
 {
 	int	i;
-	
+
 	pthread_mutex_destroy(&st->mutex_status);
 	pthread_mutex_destroy(&st->mutex_print);
 	if (st->ph)
