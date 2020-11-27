@@ -24,8 +24,6 @@ typedef struct	s_msg
 
 typedef struct	s_ph
 {
-	pthread_t		ph_id;
-	pthread_t		checker_id;
 	int				number;
 	int				eat_qty;
 	t_bool			fork_left;
