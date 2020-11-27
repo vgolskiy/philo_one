@@ -15,7 +15,7 @@ int			main(int argc, char **argv)
 	}
 	if (parallelize(&st))
 		return (free_all(&st) && EXIT_FAILURE);
-	if (pthread_result(&st))
+	if (pthread_result(st))
 		return (EXIT_FAILURE);
 	if (free_all(&st))
 		return (EXIT_FAILURE);
