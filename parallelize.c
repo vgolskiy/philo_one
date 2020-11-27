@@ -6,6 +6,7 @@ static void	*check_status(void *arg)
 	t_ph		*ph;
 
 	ph = (t_ph *)arg;
+	pthread_mutex_lock(&ph->st->mutex_status);
 	while (!ph->st->stop)
 	{
 		if ((curr_time = current_time()) == 1)
@@ -15,7 +16,7 @@ static void	*check_status(void *arg)
 		{
 			ph->st->stop = true;
 			print_message(ph, 6);
-			if (pthread_mutex_unlock(&ph->st->mutex_death))
+			if (pthread_mutex_unlock(&ph->st->mutex_status))
 			{
 				error(11);
 				return ((void *)1);
@@ -24,6 +25,7 @@ static void	*check_status(void *arg)
 		}
 		usleep(666);
 	}
+	pthread_mutex_unlock(&ph->st->mutex_status);
 	return ((void *)0);
 }
 

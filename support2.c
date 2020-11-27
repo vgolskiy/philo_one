@@ -20,19 +20,10 @@ int			ft_strlen(const char *s)
 
 int			free_all(t_st *st)
 {
-	int	i;
-
-	pthread_mutex_destroy(&st->mutex_death);
-	pthread_mutex_destroy(&st->mutex_print);
 	if (st->ph)
 		free(st->ph);
 	if (st->mutex_forks)
-	{
-		i = -1;
-		while (++i < st->qty)
-			pthread_mutex_destroy(&st->mutex_forks[i]);
 		free(st->mutex_forks);
-	}
 	return (EXIT_SUCCESS);
 }
 

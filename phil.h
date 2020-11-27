@@ -30,7 +30,6 @@ typedef struct	s_ph
 	t_bool			fork_right;
 	t_bool			eating;
 	uint64_t		time_limit_life;
-	pthread_mutex_t	mutex_eat;
 	struct s_st		*st;
 }				t_ph;
 
@@ -43,7 +42,7 @@ typedef struct	s_st
 	uint64_t		time_eat;
 	uint64_t		time_sleep;
 	uint64_t		time_start;
-	pthread_mutex_t	mutex_death;
+	pthread_mutex_t	mutex_status;
 	pthread_mutex_t	mutex_print;
 	pthread_mutex_t	*mutex_forks;
 	struct s_ph		*ph;

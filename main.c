@@ -15,8 +15,8 @@ int	main(int argc, char **argv)
 	}
 	if (parallelize(&st))
 		return (free_all(&st) && EXIT_FAILURE);
-	if (pthread_mutex_lock(&st.mutex_death)
-		|| pthread_mutex_unlock(&st.mutex_death))
+	if (pthread_mutex_lock(&st.mutex_status)
+		|| pthread_mutex_unlock(&st.mutex_status))
 		return (free_all(&st) && EXIT_FAILURE);
 	if (free_all(&st))
 		return (EXIT_FAILURE);

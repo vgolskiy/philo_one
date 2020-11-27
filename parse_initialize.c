@@ -24,9 +24,8 @@ static int	parse_args2(t_st *st)
 {
 	int	i;
 
-	if (pthread_mutex_init(&st->mutex_death, 00)
-		|| pthread_mutex_init(&st->mutex_print, 00)
-		|| pthread_mutex_lock(&st->mutex_death))
+	if (pthread_mutex_init(&st->mutex_status, 00)
+		|| pthread_mutex_init(&st->mutex_print, 00))
 		return (error(16));
 	if (!(st->mutex_forks =
 	(pthread_mutex_t *)malloc(st->qty * sizeof(pthread_mutex_t))))

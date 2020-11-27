@@ -4,8 +4,6 @@ static int	ate_enougth(t_st *st)
 {
 	st->stop = true;
 	print_message(&(st->ph[st->qty - 1]), 5);
-	if (pthread_mutex_unlock(&st->mutex_death))
-		return (error(13));
 	return (EXIT_SUCCESS);
 }
 
