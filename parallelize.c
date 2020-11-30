@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parallelize.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mskinner <v.golskiy@ya.ru>                 +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/30 12:32:15 by mskinner          #+#    #+#             */
+/*   Updated: 2020/11/30 12:35:12 by mskinner         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phil.h"
 
 static int	check_cycle(t_ph *ph)
@@ -29,7 +41,7 @@ static void	*check_status(void *arg)
 	{
 		error(11);
 		return ((void *)1);
-	}	
+	}
 	if (check_cycle(ph))
 	{
 		pthread_mutex_unlock(&ph->st->mutex_status);

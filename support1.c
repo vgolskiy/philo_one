@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   support1.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mskinner <v.golskiy@ya.ru>                 +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/30 12:32:43 by mskinner          #+#    #+#             */
+/*   Updated: 2020/11/30 12:34:54 by mskinner         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phil.h"
 
 /*
@@ -100,7 +112,7 @@ uint64_t		ft_atoi(const char *s)
 	return (sign * ft_get_num(s, sign));
 }
 
-int		error(int errn)
+int				error(int errn)
 {
 	write(STDERR_FILENO, g_err[errn - 1].desc,
 	ft_strlen(g_err[errn - 1].desc));
@@ -108,7 +120,7 @@ int		error(int errn)
 	return (EXIT_FAILURE);
 }
 
-void	*error_ptr(int errn)
+void			*error_ptr(int errn)
 {
 	error(errn);
 	return (00);

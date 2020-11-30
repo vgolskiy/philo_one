@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   support2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mskinner <v.golskiy@ya.ru>                 +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/30 12:32:49 by mskinner          #+#    #+#             */
+/*   Updated: 2020/11/30 12:35:29 by mskinner         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phil.h"
 
 t_bool		ft_isdigit(int c)
@@ -21,7 +33,7 @@ int			ft_strlen(const char *s)
 int			free_all(t_st *st)
 {
 	int	i;
-	
+
 	pthread_mutex_destroy(&st->mutex_status);
 	pthread_mutex_destroy(&st->mutex_print);
 	if (st->ph)
