@@ -81,7 +81,6 @@ int				parse_args(t_st *st, int argc, char **argv);
 **	PARALLELIZE
 */
 int				parallelize(t_st *st);
-int				pthread_result(t_st st);
 
 /*
 **	EAT WITH FORKS
